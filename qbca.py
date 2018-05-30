@@ -2,7 +2,6 @@ import numpy as np
 import math as math
 import matplotlib.pyplot as plt
 from max_heap import MaxHeap
-from time import time
 
 def compute_min_distance(histogram_bin_mins, histogram_bin_maxs, point):
   is_bin_minimum_greater = histogram_bin_mins > np.array(point)
@@ -73,7 +72,6 @@ def get_cluster_center_idx(point, candidate_seed_list):
   return cluster_center_index
 
 def assign_cluster_center(histogram_bins, seed_list, num_of_dimensions, max_points):
-  t0 = time()
   bin_candidate_seed_list = {}
   clusters = {}
   labels = np.empty(max_points)
@@ -106,7 +104,6 @@ def assign_cluster_center(histogram_bins, seed_list, num_of_dimensions, max_poin
       clusters[cluster_center_index].append(point)
       labels[points_idx[point_index_in_histogram]] = cluster_center_index
 
-  t1 = time()
   k = len(seed_list)
   cluster_centers = np.repeat(np.zeros(num_of_dimensions), len(seed_list)).reshape(k, num_of_dimensions)
 
@@ -253,9 +250,7 @@ class QBCA(object):
     num_of_histograms = math.floor(math.log(rows, cols))
     num_of_bins = num_of_histograms ** cols
 
-    t0 = time()
     histogram_bins, number_of_not_empty_bins, max_points = perform_quantization(data)
-    t1 = time()
 
     max_k = number_of_not_empty_bins + 1
     min_k = 2
@@ -267,9 +262,7 @@ class QBCA(object):
       print(f"Invalid number of clusters. Min number of clusters is {min_k}. Changing k to {min_k}.")
 
     seed_centers = initialize_cluster_centers(histogram_bins, num_of_bins, k)
-    t2 = time()
     cluster_centers = assign_cluster_center(histogram_bins, seed_centers, cols, max_points)[1]
-    t3 = time()
 
     alfa = 2 * epsilon
     iteration = 0
