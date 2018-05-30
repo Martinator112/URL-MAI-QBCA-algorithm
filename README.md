@@ -1,6 +1,6 @@
 # Quantization-based clustering algorithm
 - This repository contains implementation of quantization based clustering algorithm proposed in [this paper](https://www.sciencedirect.com/science/article/pii/S0031320310000981).
-- Also contains experiments which compare it to another implementations of algorithm from K-Means family from sci-kit learn library.
+- Also contains experiments which compare it to another implementations of algorithms from K-Means family from sci-kit learn library.
 
 # Directory structure
 
@@ -19,7 +19,6 @@
 
 ## test_image.py
   - compares QBCA with another algorithms using image segmentation on sample image "test_image.jpg"
-  - 
 ## test_iris.py
   - compares QBCA with another algorithms using `external indices` on famous IRIS dataset
 
@@ -34,9 +33,9 @@
 
 ## figures/
   - contain figures that were generated for comparing algorithms and used in the report
-  - 
+
 ## results/
   - contains CSV files containing results frm external indices comparing performance of different algorithms
-  - 
+
 ## screenshots/
   - screenshots used in the paper when describing code optimalization
